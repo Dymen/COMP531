@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order piazza</title>
+</head>
+<body>
+<h1>Piazza Order Form</h1><br>
+<img src="pizza.jpg" height="100" width="200">
+<form method="" id="piazzaForm">
+    <p>Name: </p>
+    <input type="text" id="name" placeholder="your name" required>
+    <p>Tel: </p>
+    <input type="tel" id="tel" placeholder="123-123-1234">
+    <p>Address: </p>
+    <input type="text" id="address" placeholder="Delivery address">
+    <p>Size: </p>
+    <input type="radio" name="size" value="small" required>  Small
+    <input type="radio" name="size" value="medium">  Medium
+    <input type="radio" name="size" value="large">  Large<br>
+    <p>Pizza toppings: </p>
+    <input type="checkbox" name="topping" value="Sausage"> Sausage
+    <input type="checkbox" name="topping" value="Pepperroni"> Pepperroni
+    <input type="checkbox" name="topping" value="Olives"> Olives
+    <input type="checkbox" name="topping" value="Onions"> Onions
+    <br><br>
+    <input type="submit" value="Order!" onclick="return validateForm(this.parent)">
+    <input type="reset" value="Clear">
+</form>
+
+<script type="javascript">
+    function validateForm(form) {
+        if (!form){
+            form = document.getElementById('piazzaForm')
+        }
+        var result = /[1-9]{3}-[1-9]{3}-[1-9]{4}/.test(form.tel.value)
+        if (!result)
+            window.alert("Incorrect phone nubmer format")
+    }
+</script>
+</body>
+</html>
