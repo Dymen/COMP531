@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dan Ye">
+    <title></title>
+</head>
+<body>
+    <script>
+        window.onload = function () {
+            document.writeln("<table>")
+            document.writeln("<tr>")
+            document.writeln("  <th>key</td>")
+            document.writeln("  <th>value</td>")
+            document.writeln("</tr>")
+            var params = location.search.substring(1).split("&")
+            var oneParam, i
+            var encodeKey, decodeKey, encodeVal, decodeVal
+            for (i in params){
+                oneParam = params[i]
+                encodeKey = oneParam.split("=")[0]
+                decodeKey = decodeURIComponent(encodeKey)
+                decodeKey.replace(/\+/g, " ")
+                encodeVal = oneParam.split("=")[1]
+                decodeVal = decodeURIComponent(encodeVal)
+                decodeVal.replace(/\+/g, " ")
+                if (decodeKey == "timestamp"){
+                    var date = new Date(Number(decodeVal))
+                    document.writeln("<tr>")
+                    document.writeln("  <th>" + decodeKey + "</td>")
+                    document.writeln("  <th>" + date + "</td>")
+                    document.writeln("</tr>")
+                }
+                else {
+                    document.writeln("<tr>")
+                    document.writeln("  <th>" + decodeKey + "</td>")
+                    document.writeln("  <th>" + decodeVal + "</td>")
+                    document.writeln("</tr>")
+                }
+            }
+            document.writeln("</table>")
+        }
+    </script>
+</body>
+</html>
