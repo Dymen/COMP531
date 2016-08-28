@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dan Ye">
+    <title>Registration Page</title>
+</head>
+<body>
+<form id="registration" action="formProcessor.html" method="get">
+    <p>Account name: <input type="text" name="accountName" pattern="[a-zA-Z]+[a-zA-Z0-9]*" required></p>
+    <p>Display name: <input type="text" name="displayName"></p>
+    <p>Email address: <input type="email" name="email" required></p>
+    <p>Phone number: <input type="tel" name="phone" pattern="[0-9]{7}" placeholder="1234567890" required></p>
+    <p>Date of birth: <input type="date" name="dob" required></p>
+    <p>Zipcode: <input type="text" name="zipcode" pattern="[0-9]{5}" placeholder="77005" required></p>
+    <p>Password: <input type="password" name="password" required></p>
+    <p>Confirm password: <input type="password" name="passwordConfirm" required></p>
+    <input type="hidden" name="timestamp" value="">
+    <input type="submit" value="Submit" onclick="return validateForm()">
+    <input type="reset" value="Clear">
+</form>
+<script type="text/javascript">
+    function validateForm() {
+        var form = document.getElementById("registration")
+        // validate password
+        if (form.password.value != form.passwordConfirm.value) {
+            window.alert("Password doesn't match")
+            return false
+        }
+        // validate age
+        var now = Date.now()
+        var dob = Date.parse(form.dob.value)
+        if ((now - dob)/1000/60/60/24/365 < 18) {
+            window.alert("You are under 18 years old, not eligible for registration")
+            return false
+        }
+        form.timestamp.value = now.toString()
+        return true
+    }
+</script>
+</body>
+</html>
