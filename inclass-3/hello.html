@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dan Ye">
+    <title>Hello HTML</title>
+</head>
+<body onload="allStart()">
+<h1>Hello HTML!</h1>
+<p>This is the first HTML by <em>Dan Ye</em><br>
+    Please check out my <a href="https://www.facebook.com/profile.php?id=100006124816124">facebook page</a>!
+</p>
+<img src="pic.jpg" alt="Image Missing">
+<br>
+<span id="counter" style="font-size: 60pt; font-weight: bolder">15</span>
+<br><br>
+<button type="button" onclick="resumeCounter()">Resume</button>
+<button type="button" onclick="stopCounter()">Stop</button>
+<br><br>
+<textarea id="textArea" rows="10" cols="50">
+
+
+ --- Enter your message here ---
+
+
+</textarea>
+<br><br>
+<button type="button" onclick="clearText()" style="">Clear</button><br><br>
+
+<script type="text/javascript">
+    var stopped = false;
+
+    function clearText(){
+        document.getElementById("textArea").value = "";
+    }
+
+    function sendAlert(){
+        alert("Warning: the page will refresh when the counter reaches zero");
+    }
+
+    function initAlertTimer(){
+        setTimeout(sendAlert, 5000);
+    }
+
+    function refreshCounter(){
+        var curCount = Number(document.getElementById("counter").innerHTML);
+        if ((curCount > 0) && (!stopped))
+            document.getElementById("counter").innerHTML = String(curCount-1);
+        else if ((curCount == 0) && (!stopped)){
+            clearInterval(1);
+            window.location.assign("http://www.clear.rice.edu/comp431/sample/hello.html");
+        }
+    }
+
+    function stopCounter(){
+        stopped = true;
+    }
+
+    function resumeCounter(){
+        stopped = false;
+    }
+
+    function initInterval(){
+        setInterval(refreshCounter, 1000);
+    }
+
+    function allStart(){
+        initAlertTimer();
+        initInterval();
+    }
+</script>
+</body>
+</html>
