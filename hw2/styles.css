@@ -1,0 +1,43 @@
+.profileHead {
+    font-family: "Comic Sans MS";
+    font-size: large;
+}
+
+.link {
+    position: absolute;
+    left: 250px;
+    top: 10px;
+    font-family: "Comic Sans MS";
+    font-size: large;
+    background-color: yellow;
+    border: solid;
+    border-color: coral;
+}
+
+.tableStyle {
+    position: absolute;
+    top: 50px;
+}
+
+table, th, tr {
+    border: 1px solid black;
+}
+
+.button {
+    font-family: "Comic Sans MS";
+    font-size: medium;
+    background: greenyellow;
+    border: double red;
+}
+
+.card {
+    width: 300px;
+    height: 300px;
+    font-family: "Comic Sans MS";
+    background: lightskyblue;
+}
+
+.image {
+    width: 250px;
+    height: 250px;
+}
